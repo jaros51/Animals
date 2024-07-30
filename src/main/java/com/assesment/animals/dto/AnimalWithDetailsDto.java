@@ -8,11 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnimalWithDetailsDto {
-
     long id;
     String name;
     int age;
-    long breedName;
+    String breedName;
     String gender;
-
 }

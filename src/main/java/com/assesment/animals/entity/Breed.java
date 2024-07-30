@@ -1,4 +1,4 @@
-package com.assesment.animals.entities;
+package com.assesment.animals.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,9 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Breed {
-
     @Id
     private Long id;
     private String name ;
-
 }
