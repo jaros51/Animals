@@ -16,17 +16,17 @@ public class MainController {
     @Autowired
     AnimalsService animalsService;
 
-    @GetMapping("/animals/{id}")
+    @GetMapping("/getAnimal/{id}")
     public AnimalDto getAnimal(@PathVariable String id) {
-        return animalsService.getAnimal(Long.parseLong(id)).get();
+        return animalsService.getAnimal(Long.parseLong(id)).get(); // ?
     }
 
-    @GetMapping("/animals")
+    @GetMapping("/getAnimals")
     public List<AnimalDto> getAnimals() {
         return animalsService.getAnimals();
     }
 
-    @GetMapping("/animalsWithDetails")
+    @GetMapping("/getAnimalsWithDetails")
     public List<AnimalWithDetailsDto> getAnimalsWithDetails() {
         return animalsService.getAnimalsWithDetails();
     }
@@ -44,18 +44,9 @@ public class MainController {
         return animalsService.updateAnimal(animalDto);
     }
 
-    // remove animal
     @DeleteMapping("/removeAnimal/{id}")
     public void removeAnimal(@PathVariable String id) {
         animalsService.removeAnimal(Long.parseLong(id));
     }
-
-////    1. addAnimal - REST metóda na pridanie nového zvieratka, prenosový objekt: AnimalDto
-//2. removeAnimal - REST metóda na zmazanie zvieratka, url parameter: id
-////    3. getAnimal - REST metóda na načítanie zvieratka, url parameter: id, prenosový objekt: AnimalDto
-//4. updateAnimal - REST metóda na uloženie zmien zvieratka, prenosový objekt: AnimalDto
-////    5. getAnimals - REST metóda na načítanie všetkých zvieratiek, prenosový objekt: AnimalDto[]
-////    6. getAnimalsWithDetails - REST metóda na načítanie všetkých zvieratiek s detailnymi parametrami, prenosový objekt: AnimalWithDetailsDto[]
-
 
 }
