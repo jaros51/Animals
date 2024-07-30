@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class Animal {
 
     @Id
-    @GeneratedValue
+    //@GeneratedValue
     private Long id;
     private String name;
     private Integer age;

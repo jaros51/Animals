@@ -42,7 +42,7 @@ public class AnimalControllerTest {
     public void init () {
         animal = new Animal(
                 1L,
-                "Pesox",
+                "Dunčo",
                 5,
                 new Breed(
                         1L,
@@ -53,7 +53,7 @@ public class AnimalControllerTest {
 
         animalDto = new AnimalDto(
                 1L,
-                "Pesox",
+                "Dunčo",
                 5,
                 1L,
                 "MALE"

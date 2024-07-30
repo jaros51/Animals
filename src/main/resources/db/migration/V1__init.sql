@@ -22,7 +22,7 @@ INSERT INTO BREED (NAME) VALUES('Americká akita');
 INSERT INTO BREED (NAME) VALUES('Belgický ovčiak');
 INSERT INTO BREED (NAME) VALUES('Bradáč');
 
-INSERT INTO ANIMAL (name, age, breed_id, gender) VALUES('Pesox', 5, (SELECT ID FROM BREED WHERE NAME = 'Afganský chrt'), 'MALE');
-INSERT INTO ANIMAL (name, age, breed_id, gender) VALUES('Havox', 7, (SELECT ID FROM BREED WHERE NAME = 'Afganský chrt'), 'FEMALE');
-INSERT INTO ANIMAL (name, age, breed_id, gender) VALUES('Dixoxs', 1, (SELECT ID FROM BREED WHERE NAME = 'Americká akita'), 'MALE');
-INSERT INTO ANIMAL (name, age, breed_id, gender) VALUES('Metlox', 0, (SELECT ID FROM BREED WHERE NAME = 'Americká akita'), 'FEMALE');
+INSERT INTO ANIMAL (name, age, breed_id, gender) VALUES('Dunčo', 5, (SELECT ID FROM BREED WHERE NAME = 'Afganský chrt'), 'MALE');
+INSERT INTO ANIMAL (name, age, breed_id, gender) VALUES('Havo', 7, (SELECT ID FROM BREED WHERE NAME = 'Afganský chrt'), 'FEMALE');
+INSERT INTO ANIMAL (name, age, breed_id, gender) VALUES('Dixo', 1, (SELECT ID FROM BREED WHERE NAME = 'Americká akita'), 'MALE');
+INSERT INTO ANIMAL (name, age, breed_id, gender) VALUES('Candy', 0, (SELECT ID FROM BREED WHERE NAME = 'Americká akita'), 'FEMALE');

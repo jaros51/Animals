@@ -20,13 +20,14 @@ class AnimalsApplicationTests {
         assert(animals != null);
         assert(animals.size() == 4);
 
+        animalsService.removeAnimal(0L);
         animalsService.removeAnimal(1L);
         animals = animalsService.getAnimals();
 
         assert(animals != null);
         assert(animals.size() == 3);
 
-        animalsService.addAnimal(new AnimalDto(1L, "Pesox", 5, 1L, "MALE"));
+        animalsService.addAnimal(new AnimalDto(1L, "Dunčo", 5, 1L, "MALE"));
         animals = animalsService.getAnimals();
 
         assert(animals != null);
