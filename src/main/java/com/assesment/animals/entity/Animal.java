@@ -23,19 +23,6 @@ public class Animal {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)
-    private Gender gender;
-
-    public enum Gender {
-        MALE ("MALE"),
-        FEMALE ("FEMALE");
-        private final String gender;
-        Gender(String gender) {
-            this.gender = gender;
-        }
-        @Override
-        public String toString() {
-            return gender;
-        }
-    }
+    private GenderEnum gender;
 }
 

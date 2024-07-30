@@ -4,6 +4,7 @@ import com.assesment.animals.controller.AnimalController;
 import com.assesment.animals.dto.AnimalDto;
 import com.assesment.animals.entity.Animal;
 import com.assesment.animals.entity.Breed;
+import com.assesment.animals.entity.GenderEnum;
 import com.assesment.animals.services.AnimalsService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.CoreMatchers;
@@ -48,7 +49,7 @@ public class AnimalControllerTest {
                         1L,
                         "Afganský chrt"
                 ),
-                Animal.Gender.MALE
+                GenderEnum.MALE
         );
 
         animalDto = new AnimalDto(
@@ -56,7 +57,7 @@ public class AnimalControllerTest {
                 "Dunčo",
                 5,
                 1L,
-                Animal.Gender.MALE.toString()
+                GenderEnum.MALE.toString()
         );
     }
 
