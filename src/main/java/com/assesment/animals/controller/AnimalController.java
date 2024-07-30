@@ -44,7 +44,7 @@ public class AnimalController {
     }
 
     @PostMapping("/addAnimal")
-    public ResponseEntity<Object> addAnimal(@RequestBody AnimalDto animalDto) {
+    public ResponseEntity addAnimal(@RequestBody AnimalDto animalDto) {
         Animal animal;
         try {
             animal = animalsService.addAnimal(animalDto);
@@ -59,7 +59,7 @@ public class AnimalController {
     }
 
     @PutMapping("/updateAnimal")
-    public ResponseEntity<Object> updateAnimal(@RequestBody AnimalDto animalDto) {
+    public ResponseEntity updateAnimal(@RequestBody AnimalDto animalDto) {
         Animal animal;
         try {
             animal = animalsService.updateAnimal(animalDto);
@@ -74,8 +74,17 @@ public class AnimalController {
     }
 
     @DeleteMapping("/removeAnimal/{id}")
-    public void removeAnimal(@PathVariable String id) {
-        animalsService.removeAnimal(Long.parseLong(id));
+    public ResponseEntity removeAnimal(@PathVariable String id) {
+        try {
+            animalsService.removeAnimal(Long.parseLong(id));
+        }catch (Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
+        }
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("Animal with id " + id + " removed successfully !");
     }
 
 }

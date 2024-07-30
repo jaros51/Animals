@@ -6,10 +6,9 @@ import com.assesment.animals.entity.Animal;
 import com.assesment.animals.mapper.AnimalMapper;
 import com.assesment.animals.repository.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +36,12 @@ public class AnimalsService {
 
     public Animal addAnimal(AnimalDto animalDto){
         Animal animal = AnimalMapper.INSTANCE.destinationToSource(animalDto);
+        if(animalDto.getId() < 1){
+            BigDecimal next = animalRepositoryImpl.getNextValMySequence();
+            animal.setId(next.longValue());
+        }
 
-        boolean exists = animalRepositoryImpl.existsById(animalDto.getId());
+        boolean exists = animalRepositoryImpl.existsById(animal.getId());
         if(exists){
             throw new IllegalArgumentException("Id already exists !");
         }
@@ -57,6 +60,10 @@ public class AnimalsService {
     }
 
     public void removeAnimal(Long id){
+        boolean exists = animalRepositoryImpl.existsById(id);
+        if(!exists){
+            throw new IllegalArgumentException("Id does not exist !");
+        }
         animalRepositoryImpl.deleteById(id);
     }
 
