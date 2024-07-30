@@ -48,7 +48,7 @@ public class AnimalControllerTest {
                         1L,
                         "Afganský chrt"
                 ),
-                "MALE"
+                Animal.Gender.MALE
         );
 
         animalDto = new AnimalDto(
@@ -56,7 +56,7 @@ public class AnimalControllerTest {
                 "Dunčo",
                 5,
                 1L,
-                "MALE"
+                Animal.Gender.MALE.toString()
         );
     }
 

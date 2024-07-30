@@ -16,10 +16,26 @@ public class Animal {
     private Long id;
     private String name;
     private Integer age;
+
     @ManyToOne
     @JoinColumn(name="breed_id", nullable=false)
     private Breed breed;
-    private String gender;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", nullable = false)
+    private Gender gender;
+
+    public enum Gender {
+        MALE ("MALE"),
+        FEMALE ("FEMALE");
+        private final String gender;
+        Gender(String gender) {
+            this.gender = gender;
+        }
+        @Override
+        public String toString() {
+            return gender;
+        }
+    }
 }
 
