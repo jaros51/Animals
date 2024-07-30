@@ -1,12 +1,15 @@
 package com.assesment.animals.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
+import lombok.NoArgsConstructor;
 
 @Entity(name = "animal")
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Animal {
 
     @Id
@@ -19,17 +22,5 @@ public class Animal {
     private Breed breed;
     private String gender;
 
-//    public enum Gender {
-//        MALE ("MALE"),
-//        FEMALE ("FEMALE");
-//        private final String gender;
-//        Gender(String gender) {
-//            this.gender = gender;
-//        }
-//        @Override
-//        public String toString() {
-//            return gender;
-//        }
-//    }
 }
 

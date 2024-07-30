@@ -11,14 +11,14 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/")
 
-public class MainController {
+public class AnimalController {
 
     @Autowired
     AnimalsService animalsService;
 
     @GetMapping("/getAnimal/{id}")
     public AnimalDto getAnimal(@PathVariable String id) {
-        return animalsService.getAnimal(Long.parseLong(id)).get(); // ?
+        return animalsService.getAnimal(Long.parseLong(id)).get();
     }
 
     @GetMapping("/getAnimals")
