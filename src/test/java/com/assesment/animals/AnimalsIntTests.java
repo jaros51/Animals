@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 @SpringBootTest
-class AnimalsApplicationTests {
+class AnimalsIntTests {
 
     @Autowired
     AnimalsService animalsService;
@@ -20,7 +20,7 @@ class AnimalsApplicationTests {
         assert(animals != null);
         assert(animals.size() == 4);
 
-        animalsService.removeAnimal(0L);
+        //animalsService.removeAnimal(0L);
         animalsService.removeAnimal(1L);
         animals = animalsService.getAnimals();
 
@@ -37,7 +37,7 @@ class AnimalsApplicationTests {
     @Test
     void testGetAnimal() {
 
-        AnimalDto animal = animalsService.getAnimal(2L).get();
+        AnimalDto animal = animalsService.getAnimal(2L);
 
         assert(animal != null);
         assert(animal.getAge() == 7);

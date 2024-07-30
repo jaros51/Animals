@@ -1,5 +1,6 @@
-package com.assesment.animals.controller;
+package com.assesment.animals;
 
+import com.assesment.animals.controller.AnimalController;
 import com.assesment.animals.dto.AnimalDto;
 import com.assesment.animals.entity.Animal;
 import com.assesment.animals.entity.Breed;
@@ -67,7 +68,7 @@ public class AnimalControllerTest {
         long animalId = 1;
 
         // Mocking the service behavior to return an Optional containing a specific Employee instance
-        when(animalsService.getAnimal(animalId)).thenReturn(Optional.of(animalDto));
+        when(animalsService.getAnimal(animalId)).thenReturn(animalDto);
 
         // Performing an HTTP GET request to retrieve an employee by ID
         ResultActions response = mockMvc.perform(get("/getAnimal/1")

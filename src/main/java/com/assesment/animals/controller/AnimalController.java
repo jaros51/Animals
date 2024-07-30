@@ -5,6 +5,8 @@ import com.assesment.animals.dto.AnimalWithDetailsDto;
 import com.assesment.animals.entity.Animal;
 import com.assesment.animals.services.AnimalsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -17,8 +19,18 @@ public class AnimalController {
     AnimalsService animalsService;
 
     @GetMapping("/getAnimal/{id}")
-    public AnimalDto getAnimal(@PathVariable String id) {
-        return animalsService.getAnimal(Long.parseLong(id)).get();
+    public ResponseEntity getAnimal(@PathVariable String id) {
+        AnimalDto animal;
+        try {
+            animal = animalsService.getAnimal(Long.parseLong(id));
+        }catch (Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
+        }
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(animal);
     }
 
     @GetMapping("/getAnimals")
@@ -32,16 +44,33 @@ public class AnimalController {
     }
 
     @PostMapping("/addAnimal")
-    public Animal addAnimal(@RequestBody AnimalDto animalDto) {
-        if( animalDto.getId() > 0) {
-            throw new IllegalArgumentException("Id must be 0 for new animal");
+    public ResponseEntity<Object> addAnimal(@RequestBody AnimalDto animalDto) {
+        Animal animal;
+        try {
+            animal = animalsService.addAnimal(animalDto);
+        }catch (Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
         }
-        return animalsService.addAnimal(animalDto);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(animal);
     }
 
     @PutMapping("/updateAnimal")
-    public Animal updateAnimal(@RequestBody AnimalDto animalDto) {
-        return animalsService.updateAnimal(animalDto);
+    public ResponseEntity<Object> updateAnimal(@RequestBody AnimalDto animalDto) {
+        Animal animal;
+        try {
+            animal = animalsService.updateAnimal(animalDto);
+        }catch (Exception e){
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
+        }
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(animal);
     }
 
     @DeleteMapping("/removeAnimal/{id}")
